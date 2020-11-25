@@ -24,25 +24,23 @@ public class WebDriverLCWaikikiTest {
     }
 
     @Test
-    public void addToWishlistTest() throws InterruptedException {
+    public void addToWishlistTest() {
         driver.get("https://www.lcwaikiki.by/ru-RU/BY");
         WebElement menuItem = driver.findElement(By.id("menu_1"));
         actionProvider.moveToElement(menuItem).build().perform();
         WebElement jumperMenuItem = driver.findElement(By.xpath("//ul[@id=\"dd_mmm_1_3\"]/li[7]"));
         jumperMenuItem.click();
-        WebElement goToSelectedModel = (new WebDriverWait(driver, 15))
-                .until(ExpectedConditions.visibilityOfElementLocated(By
-                        .id("model_1038186_4778926")));
+        WebElement goToSelectedModel = new WebDriverWait(driver, 15)
+                .until(ExpectedConditions.visibilityOfElementLocated(By.id("model_1038186_4778926")));
         goToSelectedModel.click();
-        WebElement addSelectedModelToWishlist = (new WebDriverWait(driver, 15))
-                .until(ExpectedConditions.visibilityOfElementLocated(By
-                        .className("add-to-favorite-detail")));
+        WebElement addSelectedModelToWishlist = new WebDriverWait(driver, 15)
+                .until(ExpectedConditions.visibilityOfElementLocated(By.className("add-to-favorite-detail")));
         addSelectedModelToWishlist.click();
         WebElement goToWishlistButton = driver.findElement(By.className("header-favorite-icon"));
         goToWishlistButton.click();
-        List <WebElement> favoriteItemsList = (new WebDriverWait(driver, 15))
+        List <WebElement> favoriteItemsList = new WebDriverWait(driver, 15)
                 .until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.className("favorite-item")));
-        Assert.assertTrue(favoriteItemsList.size()>0,"Favorite list is empty" );
+        Assert.assertTrue(favoriteItemsList.size()>0, "Favorite list is empty");
     }
 
     @AfterMethod(alwaysRun = true)

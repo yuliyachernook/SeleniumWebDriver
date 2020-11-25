@@ -18,7 +18,7 @@ public class WebDriverLCWaikikiTest {
     private Actions actionProvider;
 
     @BeforeMethod(alwaysRun = true)
-    public void driverSetup(){
+    public void driverSetup() {
         driver = new ChromeDriver();
         actionProvider = new Actions(driver);
     }
@@ -42,13 +42,12 @@ public class WebDriverLCWaikikiTest {
         goToWishlistButton.click();
         List <WebElement> favoriteItemsList = (new WebDriverWait(driver, 15))
                 .until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.className("favorite-item")));
-        Assert.assertTrue(favoriteItemsList.size()>0,"Pusto" );
+        Assert.assertTrue(favoriteItemsList.size()>0,"Favorite list is empty" );
     }
 
     @AfterMethod(alwaysRun = true)
-    public void driverTearDown(){
+    public void driverTearDown() {
         driver.quit();
-        driver=null;
+        driver = null;
     }
-
 }

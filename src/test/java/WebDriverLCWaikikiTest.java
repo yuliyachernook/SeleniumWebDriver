@@ -26,8 +26,8 @@ public class WebDriverLCWaikikiTest {
     @Test
     public void addToWishlistTest() {
         driver.get("https://www.lcwaikiki.by/ru-RU/BY");
-        WebElement menuItem = driver.findElement(By.id("menu_1"));
-        actionProvider.moveToElement(menuItem).build().perform();
+        WebElement womenMenuItem = driver.findElement(By.id("menu_1"));
+        actionProvider.moveToElement(womenMenuItem).build().perform();
         WebElement jumperMenuItem = driver.findElement(By.xpath("//ul[@id=\"dd_mmm_1_3\"]/li[7]"));
         jumperMenuItem.click();
         WebElement goToSelectedModel = new WebDriverWait(driver, 15)
